@@ -1,0 +1,43 @@
+{
+  "icons": [
+    {
+      "src": "/assets/icons/icon_512x512.f8980e211966686890d5acf38d4f0ed1.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_384x384.2e12a3a86db87e87a6eb38528aef74c2.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_256x256.b8737e0360bf51d25e45dc8d891dc033.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_192x192.1cd23b4eee385e0c5ba1f9c6680e4a33.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_128x128.0e13534aedef69f0aa5f98550452acc7.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_96x96.96e89d73d9f180d508b65937e5eaacee.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Vestri Reference Storefront",
+  "short_name": "Vestri",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "EP Reference Storefront",
+  "background_color": "#01579b",
+  "theme_color": "#01579b",
+  "theme-color": "#01579b"
+}

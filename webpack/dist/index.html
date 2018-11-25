@@ -1,0 +1,137 @@
+<!--
+    Copyright © 2018 Elastic Path Software Inc. All rights reserved.
+
+    This is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this license. If not, see
+
+        https://www.gnu.org/licenses/
+-->
+
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Elastic Path&trade; Visual Cortex - App Framework">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5bc0de" />
+
+  <meta name='viewport' content='viewport-fit=cover, user-scalable=no, width=device-width, height=device-height, initial-scale=1.0'>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+  <!-- iPhone ICON -->
+  <link href="/images/e090eb08fe409c1a4bfb3fa688af4b43-icons-192.png" sizes="57x57" rel="apple-touch-icon">
+  <!-- iPad ICON-->
+  <link href="/images/e090eb08fe409c1a4bfb3fa688af4b43-icons-192.png" sizes="72x72" rel="apple-touch-icon">
+  <!-- iPhone (Retina) ICON-->
+  <link href="/images/a924595f85a0f27ce58c0533e435125e-icons-512.png" sizes="114x114" rel="apple-touch-icon">
+  <!-- iPad (Retina) ICON-->
+  <link href="/images/a924595f85a0f27ce58c0533e435125e-icons-512.png" sizes="144x144" rel="apple-touch-icon">
+  <!-- iPhone X ICON -->
+  <link href="/images/e090eb08fe409c1a4bfb3fa688af4b43-icons-192.png" sizes="192x192" rel="apple-touch-icon">
+
+  <link href="/images/6e51084591ff128985cd0141b4a85514-iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="/images/59f6626d918035338595b0947e50d5a4-iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="/images/63d50a18d6e38bf5ff7517a5d9bf8422-iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+    rel="apple-touch-startup-image" />
+  <link href="/images/970cfa85588d72a3b1f123b7131ac119-iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+    rel="apple-touch-startup-image" />
+  <link href="/images/02bd38d45eaeffb28f7ace1174f527b3-iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+  rel="apple-touch-startup-image" />
+  <link href="/images/60678b1285ab940fb105795cb6306c57-iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+  rel="apple-touch-startup-image" />
+  <link href="/images/d19b430145e3a416b06d8901a7b49925-ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="/images/a91b3dedeb030b27aa0ce9f38cf4334b-ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="/images/ecf8a674c2618710db6c1ca8543e1e59-ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+
+  <title>Elastic Path&trade; Storefront Reference Application</title>
+
+  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+<meta name="theme-color" content="#01579b" /><link rel="manifest" href="/manifest.5672b6401405fa5101dea997cfe87078.json" /></head>
+
+<body>
+
+  <!-- Viewport -->
+  <div class="viewport ui-container" data-region="viewPortRegion"></div>
+
+  <div id="root"></div>
+
+  <noscript>
+    <style type="text/css">
+      body {
+        overflow: hidden;
+      }
+
+      .noscript-overlay {
+        background-color: white;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2000;
+      }
+
+      .noscript-contain {
+        height: 200px;
+        left: 50%;
+        margin-left: -300px;
+        margin-top: -100px;
+        position: absolute;
+        top: 50%;
+        width: 600px;
+      }
+
+      .ep-style-wrapper .regular,
+      .ep-style-wrapper p {
+        font-weight: 400;
+      }
+
+      .ep-style-wrapper .font-xl {
+        font-size: 32px;
+        line-height: 36px;
+      }
+    </style>
+    <div class="noscript-overlay">
+      <div class="noscript-contain ep-style-wrapper">
+        <span class="font-xl regular colour-dark-blue margin-s-bottom block" style="display: block;">This website requires
+          JavaScript
+        </span>
+        <p class="font-xs margin-s-bottom">The features of this website require JavasScript to function. Please check your
+          browser settings and turn on JavaScript.</p>
+        <p class="font-xs">If you can't find the setting, try searching the web for your browser name (Chrome, Firefox, etc.)
+          and "turning on JavaScript".
+        </p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- Modal Window PLaceholder -->
+  <div data-region="modalRegion" class="modal-container"></div>
+
+<script type="text/javascript" src="/runtime.js"></script><script type="text/javascript" src="/vendors~app.js"></script><script type="text/javascript" src="/app.js"></script></body>
+
+</html>

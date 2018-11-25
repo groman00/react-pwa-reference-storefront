@@ -26,6 +26,8 @@ const Config = require('Config');
 
 function cortexFetch(input, init) {
   const requestInit = init;
+  const { pathForProxy } = Config.cortexApi;
+  let { path } = Config.cortexApi;
 
   if (requestInit && requestInit.headers) {
     requestInit.headers['x-ep-user-traits'] = `LOCALE=${UserPrefs.getSelectedLocaleValue()}, CURRENCY=${UserPrefs.getSelectedCurrencyValue()}`;
@@ -35,7 +37,21 @@ function cortexFetch(input, init) {
     return mockFetch(input, requestInit);
   }
 
-  return fetch(`${Config.cortexApi.path + input}`, requestInit);
+  // Added by Newell: temporarily use the pathForProxy key as api domain.
+  if (pathForProxy) {
+    path = `${pathForProxy}${path}`;
+  }
+
+  // return fetch(`${Config.cortexApi.path + input}`, requestInit);
+
+  // Added by Newell: force auth_token to request params
+  const token = localStorage.getItem(`${Config.cortexApi.scope}_oAuthToken`);
+  if (token) {
+    // console.log(`${path + input}&auth_token=${token.split(' ').pop()}`, requestInit);
+    return fetch(`${path + input}&auth_token=${token.split(' ').pop()}`, requestInit);
+  }
+
+  return fetch(path + input, requestInit);
 }
 
 export default cortexFetch;
