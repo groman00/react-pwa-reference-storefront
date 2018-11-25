@@ -67,6 +67,21 @@ const zoomArray = [
   'recommendations:replacement:element:code',
   'recommendations:upsell:element:code',
   'recommendations:warranty:element:code',
+  'recommendations:crosssell:element:definition',
+  'recommendations:recommendation:element:definition',
+  'recommendations:replacement:element:definition',
+  'recommendations:upsell:element:definition',
+  'recommendations:warranty:element:definition',
+  'recommendations:crosssell:element:price',
+  'recommendations:recommendation:element:price',
+  'recommendations:replacement:element:price',
+  'recommendations:upsell:element:price',
+  'recommendations:warranty:element:price',
+  'recommendations:crosssell:element:availability',
+  'recommendations:recommendation:element:availability',
+  'recommendations:replacement:element:availability',
+  'recommendations:upsell:element:availability',
+  'recommendations:warranty:element:availability',
   'code',
 ];
 
@@ -228,7 +243,7 @@ class ProductDisplayItemMain extends React.Component {
               setAddAnalytics();
               sendAddToCartAnalytics();
             }
-            history.push('/mycart');
+            history.push('/mybag');
           } else {
             let debugMessages = '';
             res.json().then((json) => {
@@ -353,7 +368,9 @@ class ProductDisplayItemMain extends React.Component {
 
   renderProductImage() {
     const { productData, arFileExists } = this.state;
-    if (arFileExists) {
+    const arBrowserSupported = document.createElement('a');
+    const isInStandaloneMode = window.navigator.standalone;
+    if (arBrowserSupported.relList.supports('ar') && !isInStandaloneMode && arFileExists) {
       return (
         <a href={Config.arKit.skuArImagesUrl.replace('%sku%', productData._code[0].code)} rel="ar">
           <img src={Config.skuImagesUrl.replace('%sku%', productData._code[0].code)} onError={(e) => { e.target.src = imgPlaceholder; }} alt={intl.get('none-available')} className="itemdetail-main-img" />

@@ -33,7 +33,15 @@ const Config = require('Config');
 
 class ProductListItemMain extends React.Component {
   static propTypes = {
-    productId: PropTypes.string.isRequired,
+    productId: PropTypes.string,
+    offerData: PropTypes.objectOf(PropTypes.any),
+    productElement: PropTypes.objectOf(PropTypes.any),
+  }
+
+  static defaultProps = {
+    productId: '',
+    offerData: {},
+    productElement: {},
   }
 
   constructor(props) {
@@ -44,31 +52,52 @@ class ProductListItemMain extends React.Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props;
-    login().then(() => {
-      cortexFetchItemLookupForm()
-        .then(() => itemLookup(productId)
-          .then((res) => {
-            this.setState({
-              productData: res,
-            });
-          })
-          .catch((error) => {
-            // eslint-disable-next-line no-console
-            console.error(error.message);
-          }));
-    });
+    const { productId, offerData, productElement } = this.props;
+    if (productId !== '') {
+      login().then(() => {
+        cortexFetchItemLookupForm()
+          .then(() => itemLookup(productId)
+            .then((res) => {
+              this.setState({
+                productData: res,
+              });
+            })
+            .catch((error) => {
+              // eslint-disable-next-line no-console
+              console.error(error.message);
+            }));
+      });
+    }
+    if (productElement._definition) {
+      this.setState({
+        productData: productElement,
+      });
+    }
+    if (offerData._items) {
+      this.setState({
+        productData: offerData._items[0]._element[0],
+      });
+    }
   }
 
   render() {
     const { productData } = this.state;
+    const { offerData } = this.props;
     if (productData) {
       let listPrice = 'n/a';
-      if (productData._price) {
-        listPrice = productData._price[0]['list-price'][0].display;
-      }
       let itemPrice = 'n/a';
-      if (productData._price) {
+      if (offerData._pricerange) {
+        if (offerData._pricerange[0]['list-price-range']['from-price'] && offerData._pricerange[0]['list-price-range']['from-price'][0].amount !== offerData._pricerange[0]['list-price-range']['to-price'][0].amount) {
+          listPrice = `${offerData._pricerange[0]['list-price-range']['from-price'][0].display} - ${offerData._pricerange[0]['list-price-range']['to-price'][0].display}`;
+        }
+        if (offerData._pricerange[0]['purchase-price-range']['from-price'] && offerData._pricerange[0]['purchase-price-range']['from-price'][0].amount !== offerData._pricerange[0]['purchase-price-range']['to-price'][0].amount) {
+          itemPrice = `${offerData._pricerange[0]['purchase-price-range']['from-price'][0].display} - ${offerData._pricerange[0]['purchase-price-range']['to-price'][0].display}`;
+        } else {
+          listPrice = (offerData._pricerange[0]['list-price-range']['from-price']) ? (offerData._pricerange[0]['list-price-range']['from-price'][0].display) : ('');
+          itemPrice = (offerData._pricerange[0]['purchase-price-range']['to-price']) ? (offerData._pricerange[0]['purchase-price-range']['to-price'][0].display) : listPrice;
+        }
+      } else if (productData._price) {
+        listPrice = productData._price[0]['list-price'][0].display;
         itemPrice = productData._price[0]['purchase-price'][0].display;
       }
       let availability = false;
@@ -88,7 +117,7 @@ class ProductListItemMain extends React.Component {
           availabilityString = intl.get('out-of-stock');
         }
       }
-      const featuredProductAttribute = (productData._definition[0].details) ? (productData._definition[0].details.find(detail => detail['display-name'] === 'Featured')) : '';
+      const featuredProductAttribute = (productData._definition && productData._definition[0].details) ? (productData._definition[0].details.find(detail => detail['display-name'] === 'Featured')) : '';
       return (
         <div className="category-item-inner">
           <div className="category-item-thumbnail-container">

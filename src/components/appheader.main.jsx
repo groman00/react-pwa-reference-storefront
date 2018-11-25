@@ -79,7 +79,7 @@ class AppHeaderMain extends React.Component {
 
           <div className="central-container">
             <div className="horizontal-menu">
-              <AppHeaderNavigationMain isOfflineCheck={this.handleIsOffline} isMobileView={false} />
+              <AppHeaderNavigationMain isOfflineCheck={this.handleIsOffline} isOffline={isOffline} isMobileView={false} />
             </div>
           </div>
 
@@ -92,7 +92,7 @@ class AppHeaderMain extends React.Component {
           </div>
 
           <div className="cart-link-container">
-            <Link className="cart-link" to="/mycart" />
+            <Link className="cart-link" to="/mybag" />
           </div>
 
           <div className="locale-container">
@@ -124,7 +124,7 @@ class AppHeaderMain extends React.Component {
           <div className="mobile-cart-link-container">
             <Link
               className="cart-link"
-              to="/mycart"
+              to="/mybag"
             >
               <div data-toggle="collapse" data-target=".collapsable-container">
                 {intl.get('shopping-bag-nav')}
